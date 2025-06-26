@@ -14,6 +14,7 @@ export async function GET(){
 }
 
 export async function POST(request: Request){
+
   const {type,role,level,techstack,amount,userid}  =await request.json();
 
   try {
@@ -36,6 +37,8 @@ export async function POST(request: Request){
       });
 
     //   store these questions into database later used by vapi
+
+
       
 
     const interview={
