@@ -5,9 +5,16 @@ import { getRandomInterviewCover } from '@/lib/utils';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import DisplayTechIcons from './DisplayTechIcons';
+import { getFeedBackByInterviewId } from '@/lib/actions/general.action';
 
-const InterviewCard = ({id,userId,type,role,techstack,createdAt}:InterviewCardProps) => {
-    const feedback=null as Feedback | null; 
+const InterviewCard = async({id,userId,type,role,techstack,createdAt}:InterviewCardProps) => {
+  const feedback =
+  userId && id
+    ? await getFeedBackByInterviewId({
+        interviewId:id!,
+        userId,
+      })
+    : null;
 
     // mix of technical and behavioural
 
