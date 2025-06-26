@@ -16,8 +16,8 @@ AI Interview is an AI-powered web application that helps users practice mock int
 
 ## 📸 Demo
 
-![AI Interview Demo](./public/screens/demo.gif)  
-[Live Demo](https://your-live-url.com) (if deployed)
+
+[Live Demo](https://ai-interview-two-woad.vercel.app/) 
 
 ---
 
@@ -44,15 +44,92 @@ AI Interview is an AI-powered web application that helps users practice mock int
 ## 📁 Folder Structure
 
 ```
-├── app/                    # Next.js App Router structure
-│   ├── layout.tsx            # Landing page
-│   ├── interview/...         # Interview routes
-│   └── api/..               # API route handlers
-├── components/             # UI Components
-├── lib/                    # Firebase, Gemini, Vapi utils
-├── public/                 # Static assets (icons, images)
-├── styles/                 # Global styles (Tailwind + custom CSS)
-├── .env.local              # Environment variables
+interview-ai/
+├── app/
+│   ├── (auth)/
+│   │   ├── layout.tsx
+│   │   ├── sign-in/
+│   │   │   └── page.tsx
+│   │   └── sign-up/
+│   │       └── page.tsx
+│   ├── (root)/
+│   │   ├── interview/
+│   │   │   ├── [id]/
+│   │   │   │   ├── feedback/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── api/
+│   │   └── vapi/
+│   │       └── generate/
+│   │           └── route.ts
+│   ├── favicon.ico
+│   ├── globals.css
+│   └── layout.tsx
+├── components/
+│   ├── Agent.tsx
+│   ├── AuthForm.tsx
+│   ├── DisplayTechIcons.tsx
+│   ├── FormField.tsx
+│   ├── InterviewCard.tsx
+│   └── ui/
+│       ├── button.tsx
+│       ├── form.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       └── sonner.tsx
+├── constants/
+│   └── index.ts
+├── firebase/
+│   ├── admin.ts
+│   └── client.ts
+├── lib/
+│   ├── actions/
+│   │   ├── auth.action.ts
+│   │   └── general.action.ts
+│   ├── utils.ts
+│   └── vapi.sdk.ts
+├── public/
+│   ├── ai-avatar.png
+│   ├── calendar.svg
+│   ├── covers/
+│   │   ├── adobe.png
+│   │   ├── amazon.png
+│   │   ├── facebook.png
+│   │   ├── hostinger.png
+│   │   ├── pinterest.png
+│   │   ├── quora.png
+│   │   ├── reddit.png
+│   │   ├── skype.png
+│   │   ├── spotify.png
+│   │   ├── telegram.png
+│   │   ├── tiktok.png
+│   │   └── yahoo.png
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── logo.svg
+│   ├── pattern.png
+│   ├── profile.svg
+│   ├── react.svg
+│   ├── robot.png
+│   ├── star.svg
+│   ├── tailwind.svg
+│   ├── tech.svg
+│   ├── upload.svg
+│   ├── user-avatar.png
+│   └── window.svg
+├── types/
+│   ├── index.d.ts
+│   └── vapi.d.ts
+├── components.json
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── tsconfig.json
 └── README.md
 ```
 
@@ -64,7 +141,7 @@ AI Interview is an AI-powered web application that helps users practice mock int
 
 ```bash
 git clone https://github.com/satyam969/ai-interview.git
-cd ai-interview
+cd interview-ai
 ```
 
 ### 2. Install Dependencies
@@ -86,9 +163,12 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 
 # Vapi (Voice Agent)
 NEXT_PUBLIC_VAPI_API_KEY=your_vapi_api_key
+NEXT_PUBLIC_VAPI_WORKFLOW_ID=your_assistant_id 
+
+
 
 # Gemini (Google AI)
-GEMINI_API_KEY=your_gemini_api_key
+GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key
 ```
 
 ### 4. Run Locally
@@ -116,7 +196,38 @@ Then open [http://localhost:3000](http://localhost:3000)
 1. Visit [Vapi.ai](https://vapi.ai/)
 2. Create a voice agent
 3. Get your API key
-4. Use Vapi's React SDK or REST API to initialize the voice session in your interview page
+4.ADD THIS SYSTEM PROMPT IN YOUR ASSISTANT 
+
+[Identity]
+You are an AI Interview Assistant for a mock interview website. Your role is to collect the user's preferences and generate a personalized technical interview using an API tool.
+
+[Context]
+You are embedded into a mock interview website. The user expects an efficient, friendly, and helpful interaction that simulates a real interview preparation.
+
+[Information to Collect]
+Ask the user for the following:
+- **Role** (e.g., Frontend Developer, Data Scientist)
+- **Level** of experience (e.g., Beginner, Intermediate, Expert)
+- **Amount** (number of interview questions they want — e.g., 5, 10)
+- **Tech Stack** (e.g., React, Node.js, Python, etc.)
+- **Interview Type** (e.g., Coding, System Design, Behavioral)
+
+> 🔒 **Note:** Do **not** ask for `userId`. It will be passed automatically.
+
+Once all the above data is collected, call the tool `getInterviewQuestions` using the following format:
+
+```json
+{
+  "role": "{{role}}",
+  "level": "{{level}}",
+  "amount": "{{amount}}",
+  "techstack": "{{techstack}}",
+  "type": "{{type}}",
+  "userid": "{{userid}}"
+}
+
+and make an tool for the assistant in vapi named getInterviewQuestions to make a post request to /api/vapi/generate with body having role and the value {{role}} similarly for the rest ...
+5. Use Vapi's SDK for web to initialize the voice session in your interview page
 
 ---
 
@@ -124,11 +235,15 @@ Then open [http://localhost:3000](http://localhost:3000)
 
 1. Go to [Google AI Studio](https://makersuite.google.com/)
 2. Get your Gemini API key
-3. Use it in your API routes to:
+3. Add it to your `.env.local` as:
+   ```env
+   GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key
+   ```
+   The SDK will automatically detect this variable. Do not use GEMINI_API_KEY; use GOOGLE_GENERATIVE_AI_API_KEY as the variable name.
+4. Use it in your API routes to:
    - Generate dynamic interview questions
    - Evaluate answers
    - Summarize sessions
-
 
 ---
 
@@ -138,7 +253,7 @@ Then open [http://localhost:3000](http://localhost:3000)
 - 📹 Video-based interview support
 - 🌍 Multi-language support
 - 🧪 Live code editor integration
-- 🧭 Admin panel for question templates
+
 
 ---
 
