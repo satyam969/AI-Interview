@@ -2,6 +2,18 @@
 
 AI Interview is an AI-powered web application that helps users practice mock interviews through **voice interaction**, powered by **Vapi**, and **question generation** using **Gemini** (Google's LLM). It tracks user performance via **Firebase**, and provides smart feedback to help users improve their technical and behavioral interview skills.
 
+
+## 🔐 Privacy & Features
+
+### 💼 Resume-Based Interview (Privacy-First)
+Our platform also supports **Resume-Based Interviews** — allowing users to upload their resume to receive personalized interview questions based on their experience and skills.
+
+🛡️ **Privacy Matters**:  
+We value your privacy. **Resumes are processed temporarily in-memory** and **never stored** on our servers or databases. Once the interview is generated, all resume data is discarded.
+
+✨ This ensures a secure, private, and tailored interview experience without compromising your personal data.
+
+
 ---
 
 ## 🚀 Tech Stack
@@ -249,7 +261,7 @@ and make an tool for the assistant in vapi named getInterviewQuestions to make a
 
 ## 📊 Future Enhancements
 
-- 📄 Resume-based personalized interviews
+
 - 📹 Video-based interview support
 - 🌍 Multi-language support
 - 🧪 Live code editor integration
