@@ -26,7 +26,7 @@ const Page = async() => {
       </p>
       <Button asChild className='btn-primary max=sm:w-full'>
        <Link href='/interview'>
-       Start An Interview
+       Create An Interview
        </Link>
       </Button>
       <Image className='mx-sm:hidden' src='/robot.png' alt="robo-dude" width={400} height={400} />
