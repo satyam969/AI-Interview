@@ -52,7 +52,7 @@ We value your privacy. **Resumes are processed temporarily in-memory** and **nev
 - 👨‍🎓 **Students** preparing for placements
 - 👨‍💻 **Professionals** switching jobs or upskilling
 - 🏫 **EdTech Platforms** adding AI-powered mock interviews
-- 📄 **Resume-based dynamic Q&A** (optional extension)
+- 📄 **Resume-based dynamic Q&A** Resume Specific Questions
 
 ---
 
