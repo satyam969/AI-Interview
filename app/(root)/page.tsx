@@ -51,7 +51,7 @@ const Page = async() => {
    <h2>
     Take An Interview
    </h2>
-   <div className='interview-section'>
+   <div className='grid gap-4 w-full items-stretch grid-cols-1 sm:grid-cols-2 lg:grid-cols-2'>
    {hasUpcomingInterviews ? (latestInterviews?.map((interview)=>(
    <InterviewCard key={interview.id} {...interview}/>
    ) )  ) :

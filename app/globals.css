@@ -269,9 +269,10 @@
     @apply flex flex-row blue-gradient-dark rounded-3xl px-16 py-6 items-center justify-between max-sm:px-4;
   }
 
-  .interviews-section {
-    @apply flex flex-wrap gap-4 max-lg:flex-row w-full items-stretch;
-  }
+.interview-section {
+  @apply grid gap-4 w-full items-stretch grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+}
+
 
   .interview-text {
     @apply text-lg text-center text-white;
