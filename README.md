@@ -5,6 +5,9 @@ AI Interview is an AI-powered web application that helps users practice mock int
 
 ## 🔐 Privacy & Features
 
+## 💼 User-Based Interview 
+Our Platform Allows user To Select Interview Based on Their TechStack The role they are applying for, Their Experience and also the type of interview whether its behavioural , technical or mixed.
+
 ### 💼 Resume-Based Interview (Privacy-First)
 Our platform also supports **Resume-Based Interviews** — allowing users to upload their resume to receive personalized interview questions based on their experience and skills.
 
@@ -104,45 +107,10 @@ interview-ai/
 │   ├── utils.ts
 │   └── vapi.sdk.ts
 ├── public/
-│   ├── ai-avatar.png
-│   ├── calendar.svg
-│   ├── covers/
-│   │   ├── adobe.png
-│   │   ├── amazon.png
-│   │   ├── facebook.png
-│   │   ├── hostinger.png
-│   │   ├── pinterest.png
-│   │   ├── quora.png
-│   │   ├── reddit.png
-│   │   ├── skype.png
-│   │   ├── spotify.png
-│   │   ├── telegram.png
-│   │   ├── tiktok.png
-│   │   └── yahoo.png
-│   ├── file.svg
-│   ├── globe.svg
-│   ├── logo.svg
-│   ├── pattern.png
-│   ├── profile.svg
-│   ├── react.svg
-│   ├── robot.png
-│   ├── star.svg
-│   ├── tailwind.svg
-│   ├── tech.svg
-│   ├── upload.svg
-│   ├── user-avatar.png
-│   └── window.svg
 ├── types/
 │   ├── index.d.ts
 │   └── vapi.d.ts
-├── components.json
-├── eslint.config.mjs
-├── next.config.ts
-├── package.json
-├── package-lock.json
-├── postcss.config.mjs
-├── tsconfig.json
-└── README.md
+
 ```
 
 ---
